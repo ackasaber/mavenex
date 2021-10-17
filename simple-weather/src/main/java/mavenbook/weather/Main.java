@@ -26,9 +26,9 @@ public class Main {
         log.info("Requesting weather data for {}", city);
         // Retrieve and print the weather.
         var weather = weatherProvider.getWeatherAt(city);
-        var weatherFormatter = new WeatherPrinter();
+        var weatherFormatter = new WeatherFormatter();
         var writer = new PrintWriter(System.out);
-        weatherFormatter.print(weather, writer);
+        weatherFormatter.format(weather, writer);
         writer.flush();
     }
 

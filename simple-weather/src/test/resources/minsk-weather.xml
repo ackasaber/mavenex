@@ -1,0 +1,22 @@
+<current>
+    <city id="625144" name="Minsk">
+        <coord lon="27.5667" lat="53.9"/>
+        <country>BY</country>
+        <timezone>10800</timezone>
+        <sun rise="2021-10-17T04:40:57" set="2021-10-17T15:08:52"/>
+    </city>
+    <temperature value="7.86" min="7.63" max="7.86" unit="celsius"/>
+    <feels_like value="4.96" unit="celsius"/>
+    <humidity value="78" unit="%"/>
+    <pressure value="1016" unit="hPa"/>
+    <wind>
+        <speed value="4.9" unit="m/s" name="Gentle Breeze"/>
+        <gusts value="10.45"/>
+        <direction value="255" code="WSW" name="West-southwest"/>
+    </wind>
+    <clouds value="83" name="broken clouds"/>
+    <visibility value="10000"/>
+    <precipitation mode="no"/>
+    <weather number="803" value="broken clouds" icon="04n"/>
+    <lastupdate value="2021-10-17T19:41:42"/>
+</current>

@@ -52,6 +52,14 @@
       <version>5.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- Strangly enough, the newer version of Apache Commons IO
+         moved to a less URL-like location. -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.11.0</version>
+      <scope>test</scope>
+    </dependency>
     <!-- Since Velocity requires slf4j, let's use it directly instead of log4j. -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -99,6 +107,28 @@
           <release>17</release>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>create-executable-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>    
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>mavenbook.weather.Main</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
     <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
     <pluginManagement>
@@ -138,6 +168,10 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.3.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
