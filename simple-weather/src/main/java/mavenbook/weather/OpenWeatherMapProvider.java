@@ -1,9 +1,7 @@
 package mavenbook.weather;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
