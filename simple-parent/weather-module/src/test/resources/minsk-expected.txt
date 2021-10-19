@@ -1,0 +1,20 @@
+***********************************************************
+Weather at Minsk, BY
+
+The Sun rises at 2021-10-17T04:40:57 UTC.
+The Sun sets at 2021-10-17T15:08:52 UTC.
+
+Temperature: 7.86 °C (min 7.63 °C, max 7.86 °C).
+Temparature feels like 4.96 °C.
+
+Humidity: 78%.
+Pressure: 1016 hPa.
+
+Wind: West-southwest 4.9 m/s.
+Clouds: broken clouds.
+Precipitation: no.
+
+Weather conditions: broken clouds.
+
+Weather last updated at 2021-10-17T19:41:42 UTC.
+***********************************************************

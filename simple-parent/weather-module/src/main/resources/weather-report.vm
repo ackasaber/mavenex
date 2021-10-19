@@ -1,0 +1,20 @@
+***********************************************************
+Weather at ${weather.city}, ${weather.country}
+
+The Sun rises at ${weather.sunrise} UTC.
+The Sun sets at ${weather.sunset} UTC.
+
+Temperature: ${weather.temperature} °C (min ${weather.temperatureMin} °C, max ${weather.temperatureMax} °C).
+Temparature feels like ${weather.feelsLike} °C.
+
+Humidity: ${weather.humidity}%.
+Pressure: ${weather.pressure} hPa.
+
+Wind: ${weather.windDirection} ${weather.windSpeed} m/s.
+Clouds: ${weather.clouds}.
+Precipitation: ${weather.precipitation}.
+
+Weather conditions: ${weather.weather}.
+
+Weather last updated at ${weather.lastUpdated} UTC.
+***********************************************************
