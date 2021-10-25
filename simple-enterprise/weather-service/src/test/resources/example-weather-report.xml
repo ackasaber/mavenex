@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <!-- Allow a seemless String -> LocalDateTime conversion in property values. -->
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="mavenbook.enterprise.test.LocalDateTimeConverter"/>
+            </set>
+        </property>
+    </bean>
+    
+    <bean id="example-weather-report"
+          class="mavenbook.enterprise.entities.WeatherReport">
+        <property name="location">
+            <bean class="mavenbook.enterprise.entities.Location">
+                <property name="cityId" value="625144" />
+                <property name="city" value="Minsk" />
+                <property name="countryCode" value="BY" />
+            </bean>
+        </property>
+        <property name="updatedAt" value="2021-10-17T19:41:42" />
+        <property name="weather">
+            <bean class="mavenbook.enterprise.entities.Weather">
+                <property name="summary" value="broken clouds" />
+                <property name="temperature">
+                    <bean class="mavenbook.enterprise.entities.Temperature">
+                        <property name="current" value="7.86" />
+                        <property name="feelsLike" value="4.96" />
+                        <property name="cityMin" value="7.63" />
+                        <property name="cityMax" value="7.86" />
+                    </bean>
+                </property>
+                <property name="precipitation" value="no" />
+                <property name="wind">
+                    <bean class="mavenbook.enterprise.entities.Wind">
+                        <property name="direction" value="West-southwest" />
+                        <property name="speed" value="4.9" />
+                    </bean>
+                </property>
+                <property name="atmosphere">
+                    <bean class="mavenbook.enterprise.entities.Atmosphere">
+                        <property name="humidity" value="78" />
+                        <property name="pressure" value="1016" />
+                        <property name="clouds" value="broken clouds" />
+                        <property name="visibility" value="10000" />
+                    </bean>
+                </property>
+                <property name="sun">
+                    <bean class="mavenbook.enterprise.entities.Sun">
+                        <property name="sunrise" value="2021-10-17T04:40:57" />
+                        <property name="sunset" value="2021-10-17T15:08:52" />
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>
