@@ -30,6 +30,10 @@
         </license>
     </licenses>
 
+    <!-- Three modules:
+         - the reusable service layer,
+         - the command line application,
+         - the web interface. -->
     <modules>
         <module>weather-service</module>
         <module>weather-cli</module>
@@ -42,23 +46,39 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <!-- The child modules shouldn't mention artifact versions since it might
+         produce unnecessary variety of them. Therefore we configure the default
+         versions in the dependencyManagement section. -->
     <dependencyManagement>
         <dependencies>
+            <!-- The contemporary version of JUnit. -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>5.8.1</version>
             </dependency>
+            <!-- To compare BigDecimals. -->
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>java-hamcrest</artifactId>
+                <version>2.0.0.0</version>
+            </dependency>
+            <!-- We use Spring in the project, thus spring-test is needed
+                 for integration testing. -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>5.3.12</version>
             </dependency>
+            <!-- Logback as the logging framework. The artifact logback-classic
+                 even is compatible with Slf4j which we'll use directly. -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>1.2.6</version>
             </dependency>
+            <!-- TODO check if this is really used. (Was used for IOUtils in the
+                 formatter test before.) -->
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
@@ -89,6 +109,7 @@
                 <artifactId>spring-context</artifactId>
                 <version>5.3.12</version>
             </dependency>
+            <!-- For @Resource annotation. -->
             <dependency>
                 <groupId>javax.annotation</groupId>
                 <artifactId>javax.annotation-api</artifactId>
@@ -114,20 +135,18 @@
                 <artifactId>hsqldb</artifactId>
                 <version>2.6.0</version>
             </dependency>
+            <!-- Data source implementation. -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-dbcp2</artifactId>
                 <version>2.9.0</version>
             </dependency>
-            <dependency>
-                <groupId>org.hamcrest</groupId>
-                <artifactId>java-hamcrest</artifactId>
-                <version>2.0.0.0</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <!-- Configure Maven plugin versions
+             (the default ones will not be up to date). -->
         <pluginManagement>
             <plugins>
                 <plugin>

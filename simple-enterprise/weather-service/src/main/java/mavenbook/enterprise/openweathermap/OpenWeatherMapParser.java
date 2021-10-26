@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import mavenbook.enterprise.entities.Atmosphere;
-import mavenbook.enterprise.entities.Location;
+import mavenbook.enterprise.entities.City;
 import mavenbook.enterprise.entities.Sun;
 import mavenbook.enterprise.entities.Temperature;
 import mavenbook.enterprise.entities.Weather;
@@ -22,9 +22,19 @@ import org.slf4j.LoggerFactory;
 class OpenWeatherMapParser {
     private static final Logger log = LoggerFactory.getLogger(OpenWeatherMapParser.class);
     
+    /**
+     * Creates the OpenWeatherMap current weather XML parser.
+     */
     public OpenWeatherMapParser() {
     }
     
+    /**
+     * Parses the weather report from the given input stream.
+     * 
+     * @param input the source stream with the XML document
+     * @return the weather report
+     * @throws DocumentException if the document is malformed
+     */
     public WeatherReport parse(InputStream input) throws DocumentException {
         log.info("Creating XML reader");
         SAXReader xmlReader = new SAXReader();
@@ -42,11 +52,11 @@ class OpenWeatherMapParser {
         var updatedAt = doc.valueOf("/current/lastupdate/@value");
         report.setUpdatedAt(LocalDateTime.parse(updatedAt));
         
-        var city = new Location();
+        var city = new City();
         city.setCityId(Integer.parseInt(doc.valueOf("/current/city/@id")));
         city.setCity(doc.valueOf("/current/city/@name"));
         city.setCountryCode(doc.valueOf("/current/city/country"));
-        report.setLocation(city);
+        report.setCity(city);
         
         var weather = new Weather();
         weather.setSummary(doc.valueOf("/current/weather/@value"));

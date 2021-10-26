@@ -8,6 +8,8 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+    <!-- Only one property-placeholder per XML file works.
+         Therefore, both property files are listed together.  -->
     <context:property-placeholder location="classpath:jdbc.properties,classpath:openweathermap.properties" />
 
     <!-- Configure Spring Data JPA with the embedded database. -->
@@ -34,10 +36,12 @@
                 <prop key="hibernate.format_sql">true</prop>
             </props>
         </property>
+        <!-- Spring Data JPA will create the persistence unit based on entities
+             defined in this Java package. -->
         <property name="packagesToScan" value="mavenbook.enterprise.entities" />
     </bean>
 
-    <!-- Configure the transaction manager bean -->
+    <!-- Configure the transaction manager bean. -->
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -49,7 +53,7 @@
     <!-- Injects weatherReportDao and locationDao repository beans into the context. -->
     <jpa:repositories base-package="mavenbook.enterprise.repositories" />
     
-    <!-- Configure the Appache HttpClient with defaults. -->
+    <!-- Configure the Apache HttpClient with defaults. -->
     <bean id="httpClientBuilder"
           class="org.apache.http.impl.client.HttpClientBuilder"
           factory-method="create" />

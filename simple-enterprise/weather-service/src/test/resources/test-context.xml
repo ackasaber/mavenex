@@ -15,8 +15,8 @@
     
     <bean id="example-weather-report"
           class="mavenbook.enterprise.entities.WeatherReport">
-        <property name="location">
-            <bean class="mavenbook.enterprise.entities.Location">
+        <property name="city">
+            <bean class="mavenbook.enterprise.entities.City">
                 <property name="cityId" value="625144" />
                 <property name="city" value="Minsk" />
                 <property name="countryCode" value="BY" />
@@ -53,6 +53,53 @@
                     <bean class="mavenbook.enterprise.entities.Sun">
                         <property name="sunrise" value="2021-10-17T04:40:57" />
                         <property name="sunset" value="2021-10-17T15:08:52" />
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="new-city"
+          class="mavenbook.enterprise.entities.City">
+        <property name="cityId" value="593116" />
+        <property name="city" value="Vilnius" />
+        <property name="countryCode" value="LT" />
+    </bean>
+    
+    <bean id="new-weather-report"
+          class="mavenbook.enterprise.entities.WeatherReport">
+        <property name="city" ref="new-city" />
+        <property name="updatedAt" value="2021-10-26T20:06:42" />
+        <property name="weather">
+            <bean class="mavenbook.enterprise.entities.Weather">
+                <property name="summary" value="clear sky" />
+                <property name="temperature">
+                    <bean class="mavenbook.enterprise.entities.Temperature">
+                        <property name="current" value="4.84" />
+                        <property name="feelsLike" value="1.9" />
+                        <property name="cityMin" value="4.49" />
+                        <property name="cityMax" value="5.4" />
+                    </bean>
+                </property>
+                <property name="precipitation" value="no" />
+                <property name="wind">
+                    <bean class="mavenbook.enterprise.entities.Wind">
+                        <property name="direction" value="South" />
+                        <property name="speed" value="3.6" />
+                    </bean>
+                </property>
+                <property name="atmosphere">
+                    <bean class="mavenbook.enterprise.entities.Atmosphere">
+                        <property name="humidity" value="87" />
+                        <property name="pressure" value="1016" />
+                        <property name="clouds" value="broken clouds" />
+                        <property name="visibility" value="10000" />
+                    </bean>
+                </property>
+                <property name="sun">
+                    <bean class="mavenbook.enterprise.entities.Sun">
+                        <property name="sunrise" value="2021-10-26T05:09:24" />
+                        <property name="sunset" value="2021-10-26T14:56:02" />
                     </bean>
                 </property>
             </bean>
