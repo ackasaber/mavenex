@@ -3,19 +3,81 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
     <parent>
         <groupId>mavenbook.enterprise</groupId>
         <artifactId>simple-enterprise</artifactId>
         <version>1.0</version>
     </parent>
+    
     <artifactId>weather-webapp</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
+    
     <name>Weather Web App</name>
+    
     <dependencies>
         <dependency>
             <groupId>mavenbook.enterprise</groupId>
             <artifactId>weather-service</artifactId>
             <version>1.0</version>
         </dependency>
-    </dependencies>    
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <!-- Spring MVC dropped support for Apache Velocity,
+             so let's use Apache FreeMarker instead. -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+        <!-- Spring own classes to register FreeMarker as the view templating
+             engine in Spring MVC. -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <finalName>weather-webapp</finalName>
+        <plugins>
+            <!-- Jetty Maven plugin, deploy the app via jetty:run. -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+            </plugin>
+            <!-- There is no more compatible Hibernate Maven plugin to do DDL 
+                 generation, so let's just run the handwritten script.
+                             
+                 (Anyway, generating DDL via Hibernate won't be optimal and
+                  having a runnable schema script is nice.)
+
+                 For that, let's use the sql-maven-plugin. Run it via sql:execute. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hsqldb</groupId>
+                        <artifactId>hsqldb</artifactId>
+                        <!-- Apparently, dependencyManagement has no power here. -->
+                        <version>2.6.0</version>
+                    </dependency>
+                </dependencies>
+                
+                <configuration>
+                    <driver>org.hsqldb.jdbcDriver</driver>
+                    <url>jdbc:hsqldb:file:data/weather;shutdown=true</url>
+                    <username>sa</username>
+                    <password></password>
+                    <srcFiles>
+                        <srcFile>src/scripts/sql/schema.sql</srcFile>
+                    </srcFiles>
+                    <autocommit>true</autocommit>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
