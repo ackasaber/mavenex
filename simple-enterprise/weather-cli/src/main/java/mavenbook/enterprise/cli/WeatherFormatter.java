@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import mavenbook.enterprise.entities.WeatherReport;
 
 /**
@@ -23,6 +24,7 @@ public class WeatherFormatter {
         var classloader = WeatherFormatter.class.getClassLoader();
         freemarkerConfig.setClassLoaderForTemplateLoading(classloader, "templates");
         freemarkerConfig.setDefaultEncoding("UTF-8");
+        freemarkerConfig.setLocale(Locale.ROOT);
         freemarkerConfig.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         freemarkerConfig.setLogTemplateExceptions(false);
         freemarkerConfig.setWrapUncheckedExceptions(true);

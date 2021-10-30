@@ -1,0 +1,19 @@
+********************************************************************************
+Current weather at Minsk, BY.
+
+Summary: few clouds
+Temperature: current 9.86 °C
+             feels like 7.16 °C
+             city min 9.85 °C
+             city max 9.86 °C
+Precipitation: no
+Wind: South 5.7 m/s
+Humidity: 69%
+Pressure: 1,023 hPa
+Clouds: few clouds
+Visibility: 10,000 m
+Sunrise at 2021-10-30T05:06:01 UTC
+Sunset at 2021-10-30T14:40:35 UTC
+
+Last updated at 2021-10-30T15:24:37 UTC.
+********************************************************************************
