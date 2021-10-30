@@ -73,7 +73,7 @@
                     <username>sa</username>
                     <password></password>
                     <srcFiles>
-                        <srcFile>src/scripts/sql/schema.sql</srcFile>
+                        <srcFile>src/main/scripts/sql/schema.sql</srcFile>
                     </srcFiles>
                     <autocommit>true</autocommit>
                 </configuration>

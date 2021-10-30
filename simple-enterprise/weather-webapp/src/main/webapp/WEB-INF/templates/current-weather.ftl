@@ -18,7 +18,7 @@
         </li>
         <li>Precipitation: ${weather.precipitation}</li>
         <li>Wind: ${weather.wind.direction} ${weather.wind.speed} m/s</li>
-        <li>Humidity: ${weather.atmosphere.humidity} %</li>
+        <li>Humidity: ${weather.atmosphere.humidity}%</li>
         <li>Pressure: ${weather.atmosphere.pressure} hPa</li>
         <li>Clouds: ${weather.atmosphere.clouds}</li>
         <li>Visibility: ${weather.atmosphere.visibility} m</li>

@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>Humidity</td>
-                <td>${report.weather.atmosphere.humidity} %</td>
+                <td>${report.weather.atmosphere.humidity}%</td>
             </tr>
             <tr>
                 <td>Pressure</td>
