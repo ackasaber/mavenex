@@ -39,6 +39,15 @@
         </dependency>
     </dependencies>
     
+    <!-- Running instructions:
+         1. Create a dedicated working folder for the app.
+         2. Create the database and tables by running
+            mvn -f PATH-TO-WEATHER-SERVICE/pom.xml sql:execute
+         3. Launch the webapp from this folder via
+            mvn -f PATH-TO-WEATHER-WEBAPP/pom.xml jetty:run
+       
+         The working folder can be shared between the webapp and the CLI. -->
+
     <build>
         <finalName>weather-webapp</finalName>
         <plugins>
@@ -46,36 +55,6 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-            </plugin>
-            <!-- There is no more compatible Hibernate Maven plugin to do DDL 
-                 generation, so let's just run the handwritten script.
-                             
-                 (Anyway, generating DDL via Hibernate won't be optimal and
-                  having a runnable schema script is nice.)
-
-                 For that, let's use the sql-maven-plugin. Run it via sql:execute. -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>sql-maven-plugin</artifactId>
-                
-                <dependencies>
-                    <dependency>
-                        <groupId>org.hsqldb</groupId>
-                        <artifactId>hsqldb</artifactId>
-                        <version>${hsqldb.version}</version>
-                    </dependency>
-                </dependencies>
-                
-                <configuration>
-                    <driver>org.hsqldb.jdbcDriver</driver>
-                    <url>jdbc:hsqldb:file:data/weather;shutdown=true</url>
-                    <username>sa</username>
-                    <password></password>
-                    <srcFiles>
-                        <srcFile>src/main/scripts/sql/schema.sql</srcFile>
-                    </srcFiles>
-                    <autocommit>true</autocommit>
-                </configuration>
             </plugin>
         </plugins>
     </build>

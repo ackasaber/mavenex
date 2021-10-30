@@ -75,4 +75,40 @@
             <artifactId>commons-dbcp2</artifactId>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- There is no more compatible Hibernate Maven plugin to do DDL 
+                 generation, so let's just run the handwritten script.
+                             
+                 (Anyway, generating DDL via Hibernate won't be optimal and
+                  having a runnable schema script is nice.)
+
+                 For that, let's use the sql-maven-plugin. Run it via sql:execute
+                 and the database will be created in the current folder. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hsqldb</groupId>
+                        <artifactId>hsqldb</artifactId>
+                        <version>${hsqldb.version}</version>
+                    </dependency>
+                </dependencies>
+                
+                <configuration>
+                    <driver>org.hsqldb.jdbcDriver</driver>
+                    <url>jdbc:hsqldb:file:data/weather;shutdown=true</url>
+                    <username>sa</username>
+                    <password></password>
+                    <srcFiles>
+                        <srcFile>src/main/resources/schema.sql</srcFile>
+                    </srcFiles>
+                    <autocommit>true</autocommit>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
