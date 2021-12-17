@@ -4,12 +4,10 @@ import mavenbook.enterprise.entities.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 /**
  * City Spring Data JPA repository.
  */
-@Repository
 public interface CityRepository extends JpaRepository<City, Integer> {
     /**
      * Searches for the city by location string.
